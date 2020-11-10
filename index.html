@@ -19,7 +19,7 @@
         <div class="card-header">
             <form class="form-inline">
                 <input id="cityInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 
             <ul class="list-group list-group-flush">
@@ -33,7 +33,11 @@
       <div id="city-stats" class="card">
         <div class="card-body">
           <h5 class="card-title">City</h5>
-          <p class="card-text">use p tags to input the desired weather data. append the five day forecast to this card </p>
+          <p class="card-text temp"></p>
+          <p class="card-text humidity"></p>
+          <p class="card-text wind"></p>
+          <p class="card-text description"></p>
+          <p class="card-text UV"></p>
         </div>
       </div>
 
