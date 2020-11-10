@@ -1,0 +1,36 @@
+.jumbotron-fluid {
+    background-color: rgb(3, 3, 39);
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.display-4 {
+    font-weight: bold;
+}
+
+#search {
+    width: 30%;
+    float: left;
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
+
+.card-header {
+    height: 700px;
+}
+
+.card-body {
+    height: 350px;
+}
+
+.list-group {
+    margin-top: 20px;
+}
+
+#city-stats {
+    width: 864px;
+    float: left;
+    margin-left: 20px;
+}
