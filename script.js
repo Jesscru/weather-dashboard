@@ -29,7 +29,7 @@ $.ajax ({
     var tempF = (response.main.temp - 273.15) * 1.80 + 32;
 
     $('.card-title').text('In ' + response.name + ' today:');
-    $('.temp').text('Temperature: ' + tempF.toFixed(2));
+    $('.temp').text('Temperature: ' + tempF.toFixed());
     $('.humidity').text('Humidity: ' + response.main.humidity);
     $('.wind').text('Wind Speed: ' + response.wind.speed);
     $('.description').text('Description: ' + response.weather[0].description);
@@ -55,32 +55,41 @@ $.ajax ({
     var day4 = response.list[26];
     var day5 = response.list[34];
 
-
-    var oneDay = $('<div class="day">');
-    var twoDay = $('<div class="day">');
-    var threeDay = $('<div class="day">');
-    var fourDay = $('<div class="day">');
-
     for (var i = 3; i < response.list.length; i+=8) {
         var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
-        // var weatherIcon = $('<img src="http://openweathermap.org/img/w/"' + response.list[i].weather[0].icon + '".png"');
+        var weatherIcon = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
 
-        // oneDay.text(day1.dt_txt[5] + day1.dt_txt[6] + '/' + day1.dt_txt[8] + day1.dt_txt[9] + '/' + day1.dt_txt[0] + day1.dt_txt[1] + '\n Temperature: ' + tempF.toFixed(2) + '\n Humidity: ' + day1.main.humidity);
-        // $('.forecast').append(oneDay);
+        $('.date1').text(day1.dt_txt[5] + day1.dt_txt[6] + '/' + day1.dt_txt[8] + day1.dt_txt[9] + '/' + day1.dt_txt[0] + day1.dt_txt[1]);
+        $('.icon1').attr('src', weatherIcon);
+        $('.temp1').text('Temperature: ' + tempF.toFixed());
+        $('.humidity1').text('Humidity: ' + day1.main.humidity);
+      
     
-        // twoDay.text(day1.dt_txt[5] + day2.dt_txt[6] + '/' + day2.dt_txt[8] + day2.dt_txt[9] + '/' + day2.dt_txt[0] + day2.dt_txt[1] + '\n Temperature: ' + tempF.toFixed(2) + '\n Humidity: ' + day2.main.humidity);
-        // $('.forecast').append(twoDay);
+        $('.date2').text(day1.dt_txt[5] + day2.dt_txt[6] + '/' + day2.dt_txt[8] + day2.dt_txt[9] + '/' + day2.dt_txt[0] + day2.dt_txt[1]);
+        $('.icon2').attr('src', weatherIcon);
+        $('.temp2').text('Temperature: ' + tempF.toFixed())
+        $('.humidity2').text('Humidity: ' + day2.main.humidity);
+      
     
-        // threeDay.text(day3.dt_txt[5] + day3.dt_txt[6] + '/' + day3.dt_txt[8] + day3.dt_txt[9] + '/' + day3.dt_txt[0] + day3.dt_txt[1] + '\n Temperature: ' + tempF.toFixed(2) + '\n Humidity: ' + day3.main.humidity);
-        // $('.forecast').append(threeDay);
+        $('.date3').text(day3.dt_txt[5] + day3.dt_txt[6] + '/' + day3.dt_txt[8] + day3.dt_txt[9] + '/' + day3.dt_txt[0] + day3.dt_txt[1]);
+        $('.icon3').attr('src', weatherIcon);
+        $('.temp3').text('Temperature: ' + tempF.toFixed())
+        $('.humidity3').text('Humidity: ' + day3.main.humidity);
+     
     
-        // fourDay.text(day4.dt_txt[5] + day4.dt_txt[6] + '/' + day4.dt_txt[8] + day4.dt_txt[9] + '/' + day4.dt_txt[0] + day4.dt_txt[1] + '\n Temperature: ' + tempF.toFixed(2) + '\n Humidity: ' + day4.main.humidity);
-        // $('.forecast').append(fourDay);
+        $('.date4').text(day4.dt_txt[5] + day4.dt_txt[6] + '/' + day4.dt_txt[8] + day4.dt_txt[9] + '/' + day4.dt_txt[0] + day4.dt_txt[1]);
+        $('.icon4').attr('src', weatherIcon);
+        $('.temp4').text('Temperature: ' + tempF.toFixed()) 
+        $('.humidity4').text('Humidity: ' + day4.main.humidity);
+     
     
-        // fiveDay.text(day5.dt_txt[5] + day5.dt_txt[6] + '/' + day5.dt_txt[8] + day5.dt_txt[9] + '/' + day5.dt_txt[0] + day5.dt_txt[1] + '\n Temperature: ' + tempF.toFixed(2) + '\n Humidity: ' + day5.main.humidity);
-        // $('.forecast').append(fiveDay);
+        $('.date5').text(day5.dt_txt[5] + day5.dt_txt[6] + '/' + day5.dt_txt[8] + day5.dt_txt[9] + '/' + day5.dt_txt[0] + day5.dt_txt[1]);
+        $('.icon5').attr('src', weatherIcon);
+        $('.temp5').text('Temperature: ' + tempF.toFixed()) 
+        $('.humidity5').text('Humidity: ' + day5.main.humidity);
 
-        console.log(tempF);
+
+        console.log(weatherIcon);
         };
     })
 
