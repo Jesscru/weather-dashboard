@@ -48,22 +48,34 @@ $.ajax ({
 
 }).then(function(response){
     console.log(response);
+    
+        var day1 = response.list[3];
+        var day2 = response.list[11];
+        var day3 = response.list[19];
+        var day4 = response.list[27];
+        var day5 = response.list[35];
+        // var weatherIcon = "http://openweathermap.org/img/w/" + response.list.weather[0].icon + ".png";
+    
+        var oneDay = $('<div class="day">');
+        var twoDay = $('<div class="day">');
+        var threeDay = $('<div class="day">');
+        var fourDay = $('<div class="day">');
+        var fiveDay = $('<div class="day">');
+    
+        oneDay.text(day1.dt_txt[5] + day1.dt_txt[6] + '/' + day1.dt_txt[8] + day1.dt_txt[9] + '/' + day1.dt_txt[0] + day1.dt_txt[1] + '\n Temperature: ' + (response.list[3].main.temp - 273.15) * 1.80 + 32 + '\n Humidity: ' + day1.main.humidity);
+        $('.forecast').append(oneDay);
 
-    var day1 = response.list[3];
-    var day2 = response.list[11];
-    var day3 = response.list[19];
-    var day4 = response.list[27];
-    var day5 = response.list[35];
-    // var weatherIcon = "http://openweathermap.org/img/w/" + response.list.weather[0].icon + ".png";
+        twoDay.text(day1.dt_txt[5] + day2.dt_txt[6] + '/' + day2.dt_txt[8] + day2.dt_txt[9] + '/' + day2.dt_txt[0] + day2.dt_txt[1] + '\n Temperature: ' + (response.list[11].main.temp - 273.15) * 1.80 + 32 + '\n Humidity: ' + day2.main.humidity);
+        $('.forecast').append(twoDay);
 
-    var oneDay = $('<div class="day">');
-    var twoDay = $('<div class="day">');
-    var threeDay = $('<div class="day">');
-    var fourDay = $('<div class="day">');
-    var fiveDay = $('<div class="day">');
+        threeDay.text(day3.dt_txt[5] + day3.dt_txt[6] + '/' + day3.dt_txt[8] + day3.dt_txt[9] + '/' + day3.dt_txt[0] + day3.dt_txt[1] + '\n Temperature: ' + (response.list[19].main.temp - 273.15) * 1.80 + 32 + '\n Humidity: ' + day3.main.humidity);
+        $('.forecast').append(threeDay);
 
-    oneDay.text(day1.dt_txt[5] + day1.dt_txt[6] + '/' + day1.dt_txt[8] + day1.dt_txt[9] + '/' + day1.dt_txt[0] + day1.dt_txt[1] + '\n Temperature: ' + day1.main.temp + '\n Humidity: ' + day1.main.humidity);
-    $('.forecast').append(oneDay);
+        fourDay.text(day4.dt_txt[5] + day4.dt_txt[6] + '/' + day4.dt_txt[8] + day4.dt_txt[9] + '/' + day4.dt_txt[0] + day4.dt_txt[1] + '\n Temperature: ' + (response.list[27].main.temp - 273.15) * 1.80 + 32 + '\n Humidity: ' + day4.main.humidity);
+        $('.forecast').append(fourDay);
+
+        fiveDay.text(day5.dt_txt[5] + day5.dt_txt[6] + '/' + day5.dt_txt[8] + day5.dt_txt[9] + '/' + day5.dt_txt[0] + day5.dt_txt[1] + '\n Temperature: ' + (response.list[35].main.temp - 273.15) * 1.80 + 32 + '\n Humidity: ' + day5.main.humidity);
+        $('.forecast').append(fiveDay);
 
 })
 
