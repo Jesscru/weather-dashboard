@@ -9,30 +9,35 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Weather Dashboard</h1>
+ 
+      <div class="jumbotron jumbotron-fluid">
+          <div>
+            <h1 class="display-4">Weather Dashboard</h1>
+          </div>
         </div>
-      </div>
 
-    <div id="search" class="card">
-        <div class="card-header">
-            <form class="form-inline">
-                <input id="cityInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+  <div class="container">
 
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
+    <div class="row">
+      <div id="search" class="card col-sm-4">
+          <div class="card-header">
+              <form class="form-inline">
+                  <input id="cityInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+          </div>
         </div>
-      </div>
 
-      <div id="city-stats" class="card">
+
+      <div id="city-stats" class="card col-sm-7">
         <div class="card-body">
-          <h5 class="card-title">City</h5>
+          <h3 class="card-title">City</h3>
           <p class="card-text temp"></p>
           <p class="card-text humidity"></p>
           <p class="card-text wind"></p>
@@ -40,6 +45,14 @@
           <p class="card-text UV"></p>
         </div>
       </div>
+ 
+      <div class="five-day col-sm-10"> 
+        <h3 id="forecast-header">5 Day Forecast:</h3>
+        <div class="forecast"></div>
+      </div>
+      
+    </div>
+  </div>
 
     <script src="script.js"></script>
 </body>
