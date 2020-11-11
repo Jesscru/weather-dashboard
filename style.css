@@ -3,12 +3,12 @@ body {
 }
 
 .jumbotron-fluid {
-background-color: rgb(67, 180, 245);
-color: white;
-text-align: center;
-align-items: center;
-font-weight: bold;
-justify-content: start;
+    background-color: rgb(67, 180, 245);
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    justify-content: start;
 }
 
 .card-header {
@@ -39,11 +39,21 @@ justify-content: start;
 
 .forecast-card {
     background-color: rgb(89, 233, 89);
-    width: 175px;
+    width: 180px;
     height: 200px;
-    margin: 5px;
+    margin: 3px;
     font-weight: 400;
     line-height: 2;
     display: inline-block;
     border: solid 0.5px rgb(52, 141, 52);
+    text-align: center;
+}
+
+.date1,
+.date2,
+.date3,
+.date4,
+.date5 {
+    font-weight: 600;
+    font-size: 24px;
 }

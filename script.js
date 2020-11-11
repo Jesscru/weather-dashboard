@@ -2,29 +2,33 @@ $(document).ready(function(){
 
 var searchBtn = $('#searchBtn');
 var apiKey = "63c42ca33fcb2816693df995f648b2aa";
-var city = 'Austin';
 var cityStats = $('#city-stats');
 var inputValues = [];
 
+// query URL for UV index
 // var queryURL3 = "https://http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+
 
 // when search button is clicked, new button is created below it and value is sent to an array in local storage
 searchBtn.on('click', function(event){
     event.preventDefault();
 
     var cityInput = $('#city-input').val().trim();
+
     // url for current weather data 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
+    
     // url for 5-day forecast
     var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
-    // url for UV index
 
-    inputValues.push(cityInput);
-
+    // Creates a new list item which will later have an event listenerk that will re-display data 
     var listCity = $('<li>');
     listCity.attr('class', 'list-group-item');
     listCity.text(cityInput);
-    listCity.append($('.ul'));
+    $('.list-group').append(listCity);
+
+    inputValues.push(cityInput);
+    console.log(cityInput);
     console.log(inputValues);
 
 
@@ -42,12 +46,12 @@ $.ajax ({
     $('.wind').text('Wind Speed: ' + response.wind.speed + ' mph');
     $('.description').text('Description: ' + response.weather[0].description);
 
-    // function returnLatAndLon(){
+    // function returnLatAndLon(queryURL3, lat, lon){
     //     var lat = response.coord.lat;
     //     var lon = response.coord.lon;
     //     return lat, lon;
-    // }
 })
+
 
 // ajax call for the 5-day forecast API
 $.ajax ({
@@ -55,18 +59,22 @@ $.ajax ({
     method: 'GET'
 
 }).then(function(response){
-    console.log(response);
-
-    var day1 = response.list[2];
-    var day2 = response.list[10];
-    var day3 = response.list[18];
-    var day4 = response.list[26];
-    var day5 = response.list[34];
+    // console.log(response);
 
     for (var i = 3; i < response.list.length; i+=8) {
+
+        // variables to define the day being taken from the response (every 8th index/every day at noon)
+        var day1 = response.list[2];
+        var day2 = response.list[10];
+        var day3 = response.list[18];
+        var day4 = response.list[26];
+        var day5 = response.list[34];
+
+        // arrays that are being looped through and later displayed
         var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
         var weatherIcon = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
 
+        // changing the text on the page to dispaly the response elements
         $('.date1').text(day1.dt_txt[5] + day1.dt_txt[6] + '/' + day1.dt_txt[8] + day1.dt_txt[9] + '/' + day1.dt_txt[0] + day1.dt_txt[1]);
         $('.icon1').attr('src', weatherIcon);
         $('.temp1').text('Temperature: ' + tempF.toFixed() + ' °F');
@@ -96,19 +104,18 @@ $.ajax ({
         $('.temp5').text('Temperature: ' + tempF.toFixed() + ' °F') 
         $('.humidity5').text('Humidity: ' + day5.main.humidity + ' %');
 
-
-        console.log(weatherIcon);
         };
     })
 })
 
-// ajax call for the UV index API
+//    // ajax call for the UV index API
 // $.ajax ({
 //     url: queryURL3,
 //     method: 'GET'
 
 // }).then(function(response, lat, lon){
+//     returnLatAndLon(lat, lon)
 //     console.log(response);
-//     returnLatAndLon();
 // })
+
 })
