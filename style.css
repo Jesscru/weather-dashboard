@@ -28,3 +28,12 @@ justify-content: start;
     padding: 0;
     margin: 25px;
 } 
+
+.forecast-card {
+    background-color: rgb(89, 233, 89);
+    width: 150px;
+    height: 200px;
+    margin: 15px;
+    line-height: 2;
+    display: inline-block;
+}
