@@ -32,6 +32,18 @@ body {
     height: 350px;
     margin-left: 25px;
 }
+.UV-section{
+    display: inline;
+}
+
+.UV {
+    background-color: coral;
+    padding: 10px;
+    border: rgb(140, 140, 140) solid 0.5px;
+    border-radius: 12px;
+    display: inline;
+    visibility: hidden;
+}
 
 .five-day { 
     padding: 0;
