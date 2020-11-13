@@ -2,15 +2,39 @@ $(document).ready(function(){
 
     var searchBtn = $('#searchBtn');
     var apiKey = "63c42ca33fcb2816693df995f648b2aa";
-    var cityStats = $('#city-stats');
     var inputValues = [];
 
+    // function getLocalStorage(){
+    //     var getData = JSON.parse(localStorage.getItem('inputValues'));
+    //         var listCity = $('<button>');
+    //         listCity.attr('class', 'list-group-item');
+    //         listCity.text(cityInput);
+    //         $('.list-group').append(listCity);
+    //         listCity.attr('name', cityInput)
+    //         listCity.attr('id', cityInput);
+
+    //     if (getData !== undefined){
+    //         // for (var i = 0; i < inputValues.length; i++) {
+    //             var listCity = $('<button>');
+    //             listCity.attr('class', 'list-group-item');
+    //             listCity.text(inputValues[i]);
+    //             $('.list-group').append(listCity);
+    //             listCity.attr('name', inputValues[i])
+    //             listCity.attr('id', inputValues[i]);
+    //         // }
+    //     }
+    // }
 
     // when search button is clicked, new button is created below it and value is sent to an array in local storage
     searchBtn.on('click', function(event){
         event.preventDefault();
 
         var cityInput = $('#city-input').val().trim();
+        inputValues.push(cityInput);
+
+        $('#city-input').val('');
+
+        localStorage.setItem('inputValues', JSON.stringify(inputValues));
 
         // url for current weather data 
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
@@ -18,15 +42,19 @@ $(document).ready(function(){
         // url for 5-day forecast
         var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
 
-        // Creates a new list item which will later have an event listenerk that will re-display data 
-        var listCity = $('<button>');
-        listCity.attr('class', 'list-group-item');
-        listCity.text(cityInput);
-        $('.list-group').append(listCity);
-        listCity.attr('name', cityInput)
-        listCity.attr('id', cityInput);
+         // Creates a new list item which will later have an event listenerk that will re-display data
+        // function createButton(){
+            
+        //     var listCity = $('<button>');
+        //     listCity.attr('class', 'list-group-item');
+        //     listCity.text(cityInput);
+        //     $('.list-group').append(listCity);
+        //     listCity.attr('name', cityInput)
+        //     listCity.attr('id', cityInput);
+          
+        //     JSON.parse(localStorage.getItem('inputValues'));
+        // }
 
-        localStorage.setItem(listCity.attr('name'), cityInput);
 
     function currentWeather(){
             // ajax call for the current weather data API
@@ -40,7 +68,7 @@ $(document).ready(function(){
                 // adds data to card on the right of the page
                 $('.card-title').text('In ' + response.name + ' today:');
                 $('.temp').text('Temperature: ' + tempF.toFixed() + ' °F');
-                $('.humidity').text('Humidity: ' + response.main.humidity + ' %');
+                $('.humidity').text('Humidity: ' + response.main.humidity + '%');
                 $('.wind').text('Wind Speed: ' + response.wind.speed + ' mph');
                 $('.description').text('Description: ' + response.weather[0].description);
                 lat = response.coord.lat;
@@ -74,9 +102,7 @@ $(document).ready(function(){
                 })
 
             })
-        }
-    currentWeather();
-        
+        }        
 
     function fiveDayForecast(){
         // ajax call for the 5-day forecast API
@@ -94,19 +120,19 @@ $(document).ready(function(){
                 var day5 = response.list[34];
 
                 $('.date1').text(day1.dt_txt[5] + day1.dt_txt[6] + '/' + day1.dt_txt[8] + day1.dt_txt[9] + '/' + day1.dt_txt[0] + day1.dt_txt[1]);
-                $('.humidity1').text('Humidity: ' + day1.main.humidity+ ' %');
+                $('.humidity1').text('Humidity: ' + day1.main.humidity+ '%');
 
                 $('.date2').text(day1.dt_txt[5] + day2.dt_txt[6] + '/' + day2.dt_txt[8] + day2.dt_txt[9] + '/' + day2.dt_txt[0] + day2.dt_txt[1]);
-                $('.humidity2').text('Humidity: ' + day2.main.humidity+ ' %');
+                $('.humidity2').text('Humidity: ' + day2.main.humidity+ '%');
 
                 $('.date3').text(day3.dt_txt[5] + day3.dt_txt[6] + '/' + day3.dt_txt[8] + day3.dt_txt[9] + '/' + day3.dt_txt[0] + day3.dt_txt[1]);
-                $('.humidity3').text('Humidity: ' + day3.main.humidity + ' %');
+                $('.humidity3').text('Humidity: ' + day3.main.humidity + '%');
 
                 $('.date4').text(day4.dt_txt[5] + day4.dt_txt[6] + '/' + day4.dt_txt[8] + day4.dt_txt[9] + '/' + day4.dt_txt[0] + day4.dt_txt[1]);
-                $('.humidity4').text('Humidity: ' + day4.main.humidity + ' %');
+                $('.humidity4').text('Humidity: ' + day4.main.humidity + '%');
 
                 $('.date5').text(day5.dt_txt[5] + day5.dt_txt[6] + '/' + day5.dt_txt[8] + day5.dt_txt[9] + '/' + day5.dt_txt[0] + day5.dt_txt[1]);
-                $('.humidity5').text('Humidity: ' + day5.main.humidity + ' %');
+                $('.humidity5').text('Humidity: ' + day5.main.humidity + '%');
                 var count = 1;
                 
                 for (var i = 3; i < response.list.length; i+=8) {
@@ -123,20 +149,17 @@ $(document).ready(function(){
                     }
                 })
             }
-        fiveDayForecast();
+  
+            
+    // getLocalStorage();
+    // createButton();
+    currentWeather();
+    fiveDayForecast();
 
     // when click on any of the list group buttons, it displays the information for that city 
         $('#' + cityInput).on('click', function(){ 
            currentWeather();
            fiveDayForecast();
-        })
+        });
     })
-
-
-
-        // if (localStorage !== null){
-        //     localStorage.getItem(listCity.attr('name'));
-    
-        // }
-
 })
