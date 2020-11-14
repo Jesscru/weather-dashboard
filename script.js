@@ -31,8 +31,8 @@ $(document).ready(function(){
 
             if (inputValues.length > 4) {
                 inputValues.shift();
-                $('li').last().html("");
-                $('li').last().remove();
+                $('button').last().html("");
+                $('button').last().remove();
             }
 
    
