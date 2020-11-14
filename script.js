@@ -1,22 +1,13 @@
 $(document).ready(function(){
     var inputValues = [];
+    // var cityInput = '';
     var searchBtn = $('#searchBtn');
     var apiKey = "63c42ca33fcb2816693df995f648b2aa";
 
-    var getData = localStorage.getItem('inputValues');
-    // if localData not undefined then parse that as cars array, otherwise is empty array
-    var inputValues = getData ? JSON.parse(getData) : [];
-        for (var i = 0; i < inputValues.length; i++) {
-            var listCity = $('<button>');
-            listCity.attr('class', 'list-group-item');
-            listCity.text(inputValues[i]);
-            $('.list-group').append(listCity);
-            listCity.attr('name', inputValues[i])
-            listCity.attr('id', inputValues[i]);
-        }
+  
 
     // when search button is clicked, new button is created below it and value is sent to an array in local storage
-    searchBtn.on('click', function(event){
+    searchBtn.on('click', function(event, cityInput){
         event.preventDefault();
 
         var cityInput = $('#city-input').val().trim();
@@ -26,26 +17,53 @@ $(document).ready(function(){
 
         localStorage.setItem('inputValues', JSON.stringify(inputValues));
 
-        // url for current weather data 
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
-        
-        // url for 5-day forecast
-        var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
 
-        //  Creates a new list item which will later have an event listenerk that will re-display data
-            
+        //  Creates a new list item which will later have an event listener that will re-display data
             var listCity = $('<button>');
             listCity.attr('class', 'list-group-item');
             listCity.text(cityInput);
-            $('.list-group').append(listCity);
+            $('.list-group').prepend(listCity);
             listCity.attr('name', cityInput)
             listCity.attr('id', cityInput);
-          
-            // JSON.parse(localStorage.getItem('inputValues'));
-            console.log(inputValues);        
+            console.log(inputValues);     
+            currentWeather(cityInput);
+            fiveDayForecast(cityInput);   
 
+            if (inputValues.length > 4) {
+                inputValues.shift();
+                $('li').last().html("");
+                $('li').last().remove();
+            }
 
-    function currentWeather(){
+   
+    // when click on any of the list group buttons, it displays the information for that city 
+        $('#' + cityInput).on('click', function(){ 
+            currentWeather(cityInput);
+            fiveDayForecast(cityInput);
+         });
+        })
+
+    // on page load--if local storeage is not empty--anything stored in it will appear as a button on the page
+    if (localStorage === undefined){
+        inputValues.clear();
+    } else {
+        var getData = localStorage.getItem('inputValues');
+        var inputValues = getData ? JSON.parse(getData) : [];
+        for (var i = 0; i < inputValues.length; i++) {
+            var listCity = $('<button>');
+            listCity.attr('class', 'list-group-item');
+            listCity.text(inputValues[i]);
+            $('.list-group').append(listCity);
+            listCity.attr('name', inputValues[i])
+            listCity.attr('id', inputValues[i]);
+            }
+        }  
+        
+
+    function currentWeather(cityInput){
+            // url for current weather data 
+            var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
+
             // ajax call for the current weather data API
             $.ajax ({
                 url: queryURL,
@@ -91,9 +109,13 @@ $(document).ready(function(){
             })
         }        
 
-    function fiveDayForecast(){
+    function fiveDayForecast(cityInput){
+        // url for 5-day forecast
+        var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
+
         // ajax call for the 5-day forecast API
         $.ajax ({
+            
             url: queryURL2,
             method: 'GET'
 
@@ -136,17 +158,12 @@ $(document).ready(function(){
                     }
                 })
             }
-  
-            
-        getLocalStorage();
-        // createButton();
-        currentWeather();
-        fiveDayForecast();
 
-    // when click on any of the list group buttons, it displays the information for that city 
-        $('#' + cityInput).on('click', function(){ 
-           currentWeather();
-           fiveDayForecast();
-        });
-    })
+    function displayLastCity(){ 
+        var cityInput = inputValues.slice(-1).pop();
+        currentWeather(cityInput);
+        fiveDayForecast(cityInput);
+    }
+    displayLastCity();
+   
 })
