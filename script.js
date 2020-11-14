@@ -1,29 +1,19 @@
 $(document).ready(function(){
-
+    var inputValues = [];
     var searchBtn = $('#searchBtn');
     var apiKey = "63c42ca33fcb2816693df995f648b2aa";
-    var inputValues = [];
 
-    // function getLocalStorage(){
-    //     var getData = JSON.parse(localStorage.getItem('inputValues'));
-    //         var listCity = $('<button>');
-    //         listCity.attr('class', 'list-group-item');
-    //         listCity.text(cityInput);
-    //         $('.list-group').append(listCity);
-    //         listCity.attr('name', cityInput)
-    //         listCity.attr('id', cityInput);
-
-    //     if (getData !== undefined){
-    //         // for (var i = 0; i < inputValues.length; i++) {
-    //             var listCity = $('<button>');
-    //             listCity.attr('class', 'list-group-item');
-    //             listCity.text(inputValues[i]);
-    //             $('.list-group').append(listCity);
-    //             listCity.attr('name', inputValues[i])
-    //             listCity.attr('id', inputValues[i]);
-    //         // }
-    //     }
-    // }
+    var getData = localStorage.getItem('inputValues');
+    // if localData not undefined then parse that as cars array, otherwise is empty array
+    var inputValues = getData ? JSON.parse(getData) : [];
+        for (var i = 0; i < inputValues.length; i++) {
+            var listCity = $('<button>');
+            listCity.attr('class', 'list-group-item');
+            listCity.text(inputValues[i]);
+            $('.list-group').append(listCity);
+            listCity.attr('name', inputValues[i])
+            listCity.attr('id', inputValues[i]);
+        }
 
     // when search button is clicked, new button is created below it and value is sent to an array in local storage
     searchBtn.on('click', function(event){
@@ -42,18 +32,17 @@ $(document).ready(function(){
         // url for 5-day forecast
         var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
 
-         // Creates a new list item which will later have an event listenerk that will re-display data
-        // function createButton(){
+        //  Creates a new list item which will later have an event listenerk that will re-display data
             
-        //     var listCity = $('<button>');
-        //     listCity.attr('class', 'list-group-item');
-        //     listCity.text(cityInput);
-        //     $('.list-group').append(listCity);
-        //     listCity.attr('name', cityInput)
-        //     listCity.attr('id', cityInput);
+            var listCity = $('<button>');
+            listCity.attr('class', 'list-group-item');
+            listCity.text(cityInput);
+            $('.list-group').append(listCity);
+            listCity.attr('name', cityInput)
+            listCity.attr('id', cityInput);
           
-        //     JSON.parse(localStorage.getItem('inputValues'));
-        // }
+            // JSON.parse(localStorage.getItem('inputValues'));
+            console.log(inputValues);        
 
 
     function currentWeather(){
@@ -98,9 +87,7 @@ $(document).ready(function(){
                     $('.UV-section').text('UV Index: ');
                     $('.UV').text(response.value);
                     $('.UV').css('visibility', 'visible');
-
                 })
-
             })
         }        
 
@@ -151,10 +138,10 @@ $(document).ready(function(){
             }
   
             
-    // getLocalStorage();
-    // createButton();
-    currentWeather();
-    fiveDayForecast();
+        getLocalStorage();
+        // createButton();
+        currentWeather();
+        fiveDayForecast();
 
     // when click on any of the list group buttons, it displays the information for that city 
         $('#' + cityInput).on('click', function(){ 
