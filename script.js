@@ -1,6 +1,5 @@
 $(document).ready(function(){
     var inputValues = [];
-    // var cityInput = '';
     var searchBtn = $('#searchBtn');
     var apiKey = "63c42ca33fcb2816693df995f648b2aa";
 
@@ -11,36 +10,41 @@ $(document).ready(function(){
         event.preventDefault();
 
         var cityInput = $('#city-input').val().trim();
-        inputValues.push(cityInput);
 
-        $('#city-input').val('');
+        if (cityInput === ""){
+            alert('Please enter a city.');
+        } else {
+            inputValues.push(cityInput);
 
-        localStorage.setItem('inputValues', JSON.stringify(inputValues));
+            $('#city-input').val('');
+
+            localStorage.setItem('inputValues', JSON.stringify(inputValues));
 
 
-        //  Creates a new list item which will later have an event listener that will re-display data
-            var listCity = $('<button>');
-            listCity.attr('class', 'list-group-item');
-            listCity.text(cityInput);
-            $('.list-group').prepend(listCity);
-            listCity.attr('name', cityInput)
-            listCity.attr('id', cityInput);
-            console.log(inputValues);     
-            currentWeather(cityInput);
-            fiveDayForecast(cityInput);   
+            //  Creates a new list item which will later have an event listener that will re-display data
+                var listCity = $('<button>');
+                listCity.attr('class', 'list-group-item');
+                listCity.text(cityInput);
+                $('.list-group').prepend(listCity);
+                listCity.attr('name', cityInput)
+                listCity.attr('id', cityInput);
+                console.log(inputValues);     
+                currentWeather(cityInput);
+                fiveDayForecast(cityInput);   
 
-            if (inputValues.length > 4) {
-                inputValues.shift();
-                $('button').last().html("");
-                $('button').last().remove();
+                if (inputValues.length > 4) {
+                    inputValues.shift();
+                    $('button').last().html("");
+                    $('button').last().remove();
+                }
+
+    
+        // when click on any of the list group buttons, it displays the information for that city 
+            $('#' + cityInput).on('click', function(){ 
+                currentWeather(cityInput);
+                fiveDayForecast(cityInput);
+            });
             }
-
-   
-    // when click on any of the list group buttons, it displays the information for that city 
-        $('#' + cityInput).on('click', function(){ 
-            currentWeather(cityInput);
-            fiveDayForecast(cityInput);
-         });
         })
 
     // on page load--if local storeage is not empty--anything stored in it will appear as a button on the page
