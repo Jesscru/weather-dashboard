@@ -29,6 +29,8 @@ Figure 2:
 
 The [OpenWeather API](https://openweathermap.org/api) was used to retrieve weather data for inputed cities.
 
+The page is hosted by Github pages. 
+
 ## License 
 
 This project has MIT license. 
