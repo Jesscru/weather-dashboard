@@ -27,7 +27,7 @@ Figure 2:
 
 ## Credits
 
-The [OpenWeather API](https://openweathermap.org/api) was used to retrieve weather data for inputed cities.
+The [OpenWeather API](https://openweathermap.org/api) was used to retrieve weather data for inputed cities and the retrieval of the icons.
 
 The page is hosted by Github pages. 
 
