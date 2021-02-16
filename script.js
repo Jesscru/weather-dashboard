@@ -169,8 +169,6 @@ $(document).ready(function(){
     function displayLastCity(){ 
         $('.list-group-item').on('click', function(e){
             let prevCity = e.target.id;
-
-            console.log(prevCity);
             currentWeather(prevCity);
             fiveDayForecast(prevCity);
         })        
