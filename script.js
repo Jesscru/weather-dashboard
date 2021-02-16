@@ -32,7 +32,7 @@ $(document).ready(function(){
                 currentWeather(cityInput);
                 fiveDayForecast(cityInput);   
 
-                if (inputValues.length > 4) {
+                if (inputValues.length > 11) {
                     inputValues.shift();
                     $('button').last().html("");
                     $('button').last().remove();
@@ -97,7 +97,7 @@ $(document).ready(function(){
                 }).then(function(response){
 
                     if (response.value < 3){
-                        $('.UV').css('background-color', '#59E959');
+                        $('.UV').css('background-color', '#69E769');
                     } else if (response.value < 6){
                         $('.UV').css('background-color', 'yellow');
                     } else if (response.value < 8){
@@ -162,12 +162,18 @@ $(document).ready(function(){
                     }
                 })
             }
+            
+            
 
     // displays data from city previously inputted and gets rid of the earliest city searched after there are 5
     function displayLastCity(){ 
-        var cityInput = inputValues.slice(-1).pop();
-        currentWeather(cityInput);
-        fiveDayForecast(cityInput);
+        $('.list-group-item').on('click', function(e){
+            let prevCity = e.target.id;
+
+            console.log(prevCity);
+            currentWeather(prevCity);
+            fiveDayForecast(prevCity);
+        })        
     }
     displayLastCity();
    
