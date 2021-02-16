@@ -1,5 +1,5 @@
 body {
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .jumbotron-fluid {
@@ -13,6 +13,10 @@ body {
 
 .card-header {
     height: 350px;
+}
+
+.card-title {
+    margin-bottom: 20px;
 }
 
 .form-inline {
@@ -47,19 +51,20 @@ body {
 
 .five-day { 
     padding: 0;
-    margin: 25px 25px 25px 50px;
+    margin: 25px 10px 50px;
 } 
 
 .forecast-card {
     background-color: rgb(89, 233, 89);
-    width: 180px;
-    height: 200px;
+    width: 200px;
+    height: auto;
     margin: 3px;
     font-weight: 400;
     line-height: 2;
     display: inline-block;
     border: solid 0.5px rgb(52, 141, 52);
     text-align: center;
+
 }
 
 .date1,

@@ -163,6 +163,7 @@ $(document).ready(function(){
                 })
             }
 
+    // displays data from city previously inputted and gets rid of the earliest city searched after there are 5
     function displayLastCity(){ 
         var cityInput = inputValues.slice(-1).pop();
         currentWeather(cityInput);
