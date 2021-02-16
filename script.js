@@ -57,7 +57,7 @@ $(document).ready(function(){
             var listCity = $('<button>');
             listCity.attr('class', 'list-group-item');
             listCity.text(inputValues[i]);
-            $('.list-group').append(listCity);
+            $('.list-group').prepend(listCity);
             listCity.attr('name', inputValues[i])
             listCity.attr('id', inputValues[i]);
             }
