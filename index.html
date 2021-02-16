@@ -19,83 +19,74 @@
           </div>
         </div>
 
-  <div class="container">
 
-    <div class="row">
-      <div id="search" class="card col-lg-4">
-          <div class="card-header">
-              <form class="form-inline">
-                  <input id="city-input" class="form-control mr-sm-2" type="text" placeholder="Add a city" aria-label="Search">
-                  <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
 
-              <ul class="list-group list-group-flush">
-                </ul>
-          </div>
+    <div id="search">
+        <div class="cities card-header">
+            <form class="form-inline">
+                    <input id="city-input" class="form-control mr-sm-2" type="text" placeholder="Add a city" aria-label="Search">
+                    <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <ul class="list-group list-group-flush">
+            </ul>
         </div>
 
-
-      <div id="city-stats" class="card col-lg-7">
-        <div class="card-body">
-          <h3 class="card-title">What's the weather like in.....?</h3>
-          <p class="card-text temp"></p>
-          <p class="card-text humidity"></p>
-          <p class="card-text wind"></p>
-          <p class="card-text description"></p>
-          <p class="card-text UV-section">
-            <figure class="UV"></figure>
-          </p>
-        </div>
-      </div>
- 
-      <div class="five-day col-lg-12"> 
-        <h3 id="forecast-header">5 Day Forecast:</h3>
-
-        <div class="five-day-forecast">
-
-          <div class="forecast-card card-body">
-            <div class="date1"></div>
-            <img class="icon1">
-            <div class="temp1"></div>
-            <div class="humidity1"></div>
-          </div>
-
-          <div class="forecast-card card-body">
-            <div class="date2"></div>
-            <img class="icon2">
-            <div class="temp2"></div>
-            <div class="humidity2"></div>
-          </div>
-
-          <div class="forecast-card card-body">
-            <div class="date3"></div>
-            <img class="icon3">
-            <div class="temp3"></div>
-            <div class="humidity3"></div>
-          </div>
-
-          <div class="forecast-card card-body">
-            <div class="date4"></div>
-            <img class="icon4">
-            <div class="temp4"></div>
-            <div class="humidity4"></div>
-          </div>
-
-          <div class="forecast-card card-body">
-            <div class="date5"></div>
-            <img class="icon5">
-            <div class="temp5"></div>
-            <div class="humidity5"></div>
-          </div>
-
+        <div id="city-stats" class="card-body">
+            <h3 class="card-title">What's the weather like in.....?</h3>
+            <p class="card-text temp"></p>
+            <p class="card-text humidity"></p>
+            <p class="card-text wind"></p>
+            <p class="card-text description"></p>
+            <p class="card-text UV-section">
+                <figure class="UV"></figure>
+            </p>
         </div>
 
+        <div class="five-day"> 
+            <h3 id="forecast-header">5 Day Forecast:</h3>
 
+            <div class="five-day-forecast">
 
-      </div>
+                <div class="forecast-card card-body">
+                    <div class="date1"></div>
+                    <img class="icon1">
+                    <div class="temp1"></div>
+                    <div class="humidity1"></div>
+                </div>
+
+                <div class="forecast-card card-body">
+                    <div class="date2"></div>
+                    <img class="icon2">
+                    <div class="temp2"></div>
+                    <div class="humidity2"></div>
+                </div>
+
+                <div class="forecast-card card-body">
+                    <div class="date3"></div>
+                    <img class="icon3">
+                    <div class="temp3"></div>
+                    <div class="humidity3"></div>
+                </div>
+
+                <div class="forecast-card card-body">
+                    <div class="date4"></div>
+                    <img class="icon4">
+                    <div class="temp4"></div>
+                    <div class="humidity4"></div>
+                </div>
+
+                <div class="forecast-card card-body">
+                    <div class="date5"></div>
+                    <img class="icon5">
+                    <div class="temp5"></div>
+                    <div class="humidity5"></div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-
-  </div>
 
     <script src="script.js"></script>
 </body>

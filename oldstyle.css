@@ -3,24 +3,24 @@ body {
 }
 
 .jumbotron-fluid {
-    background-color: rgb(86, 186, 243);
+    background-color: rgb(67, 180, 245);
     color: white;
     text-align: center;
     align-items: center;
     font-weight: bold;
     justify-content: start;
-    margin: 0;
 }
 
-.cities {
-    height: 100vh;
-    width: 25%;
-    float: left;
-    margin-right: 25px;
+.card-header {
+    height: 350px;
+}
+
+.card-title {
+    margin-bottom: 20px;
 }
 
 .form-inline {
-    margin: 15px 0;
+    margin-bottom: 5px;
 }
 
 .list-group-item {
@@ -28,18 +28,14 @@ body {
     text-align: left;
 }
 
-#city-stats {
-    height: auto;
-    width: 600px;
+#search {
     padding: 0;
-    margin: 20px;
-    float: left;
 }
 
-.card-title {
-    margin: 20px 0 20px;
+#city-stats {
+    height: 350px;
+    margin-left: 25px;
 }
-
 .UV-section{
     display: inline;
 }
@@ -54,21 +50,21 @@ body {
 }
 
 .five-day { 
-    margin: 40px 0 0 20px;
-    display: inline-block;
+    padding: 0;
+    margin: 25px 10px 50px;
 } 
 
 .forecast-card {
-    background-color: rgb(105, 231, 105);
-    width: auto;
-    height: 200px;
+    background-color: rgb(89, 233, 89);
+    width: 200px;
+    height: auto;
     margin: 3px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 2;
     display: inline-block;
     border: solid 0.5px rgb(52, 141, 52);
     text-align: center;
-    font-size: 14px;
+
 }
 
 .date1,
@@ -77,6 +73,6 @@ body {
 .date4,
 .date5 {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 24px;
 }
 
